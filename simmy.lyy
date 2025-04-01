@@ -80,7 +80,7 @@
                 return;
             }
 
-            fetch("https://script.google.com/macros/s/AKfycbz1yV1g6g6Bvg2ba8d2Git6rNZk0414P58b6ajXUu9i5y5Qbl_OHTpATBntDenEi4wh/exec", {
+            fetch("https://script.google.com/macros/s/AKfycbwy317wsj1fe6HIGw3Ipiv62Nh7Q_n_M0NWdGQjLRe_e4rojEy14G4AdK1nouB7Dkm_/exec", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: new URLSearchParams({
