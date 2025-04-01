@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Telegram Group</title>
+    <style>
+        body {
+            background: rgba(0, 0, 0, 0.8); /* Light black for the full page */
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            background: rgba(0, 0, 0, 0.9); /* Dark black for the box */
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        input, select, button {
+            width: calc(100% - 20px);
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background: linear-gradient(45deg, #F58529, #D21F6A, #8a3ab9); /* Instagram logo gradient */
+            color: white;
+            cursor: pointer;
+        }
+        .small-text {
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .small-text a {
+            color: #F58529; /* Instagram logo color */
+            text-decoration: none;
+            background: linear-gradient(45deg, #F58529, #D21F6A, #8a3ab9);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    </style>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            
+            let fullName = document.getElementById('fullName').value;
+            let email = document.getElementById('email').value;
+            let whatsappNumber = document.getElementById('whatsappNumber').value;
+            let instagramId = document.getElementById('instagramId').value;
+            let gender = document.getElementById('gender').value;
+
+            if (!fullName || !email || !whatsappNumber || !instagramId || !gender) {
+                alert('All fields are mandatory. Please fill in all fields.');
+                return;
+            }
+
+            // Validate email format
+            let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Validate phone number (basic check for length)
+            if (whatsappNumber.length < 10) {
+                alert('Please enter a valid WhatsApp number.');
+                return;
+            }
+
+            fetch("https://script.google.com/macros/s/AKfycbysPYcDRaschaOZDQStvecoStYjBAt2vQdLZOnTOQqmj_zvIKkbvTeUqgXfVArPTR5l/exec", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams({
+                    fullName: fullName,
+                    email: email,
+                    whatsappNumber: whatsappNumber,
+                    instagramId: instagramId,
+                    gender: gender
+                })
+            })
+            .then(response => response.text())
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => console.error("Error:", error));
+
+            let shortUrl = "https://shrinke.me/example"; // Replace with actual short link
+            let hiddenLink = document.createElement('a');
+            hiddenLink.href = shortUrl;
+            hiddenLink.target = "_blank";
+            hiddenLink.click();
+
+            setTimeout(() => {
+                window.location.href = "https://t.me/yourgroup"; // Replace with actual Telegram group link
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Let's work with SIMRAN 👩🏻💸</h2>
+        <form onsubmit="submitForm(event)">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="whatsappNumber" placeholder="WhatsApp Number" required>
+            <input type="text" id="instagramId" placeholder="Instagram ID" required>
+            <select id="gender" required>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+        <p class="small-text">By submitting this form, you agree to our <a href="https://smptc.github.io/terms-and-conditions/" target="_blank">Terms & Conditions</a></p>
+    </div>
+</body>
+</html>
