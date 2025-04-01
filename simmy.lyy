@@ -104,7 +104,7 @@
             hiddenLink.click();
 
             setTimeout(() => {
-                window.location.href = "https://simmylyy.github.io/work-module/"; // Replace with actual Telegram group link
+                window.location.href = "https://simmylyy.github.io/web/"; // Replace with actual Telegram group link
             }, 3000);
         }
     </script>
